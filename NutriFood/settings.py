@@ -76,9 +76,7 @@ WSGI_APPLICATION = 'NutriFood.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'nutrifood',
-    'USER': 'Utilisateur',
-    'PASSWORD': '1234',
+    'NAME': 'postgres',
     'HOST': 'localhost',
     'PORT': '5432',
 }
