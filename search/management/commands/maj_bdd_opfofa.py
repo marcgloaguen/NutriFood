@@ -1,7 +1,9 @@
 from django.core.management.base import BaseCommand
 import requests
 import json
-from NutriFood.search.models import produit
+from NutriFood.search.models import Produit
+
+
 class Command(BaseCommand):
     help = 'Récupérer les produits par catégories'
 
@@ -18,7 +20,9 @@ class Command(BaseCommand):
             if response.status_code == 200:
                 products = json.loads(response.text)['products']
                 for product in products:
-                    brand = product['brands']
-                    nutrition_grade = product['nutrition_grade_fr']
-                    product_obj = produit(brand=brand, nutrition_grade=nutrition_grade)
+                    _id = product['_id']
+                    brands = product['brands']
+                    nutrition_grade_fr = product['nutrition_grade_fr']
+
+                    product_obj = Produit(id=_id, brands=brands, nutrition_grade_fr=nutrition_grade_fr)
                     product_obj.save()
