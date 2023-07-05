@@ -23,7 +23,13 @@ class Command(BaseCommand):
                     _id = product.get('_id')
                     brands = product.get('brands')
                     nutrition_grade_fr = product.get('nutrition_grade_fr')
+                    countries = product.get('countries')
 
-
-                    product_obj = Produit(id=_id, brands=brands, nutrition_grade_fr=nutrition_grade_fr)
+                    product_obj = Produit(
+                        id=_id,
+                        brands=brands,
+                        nutrition_grade_fr=nutrition_grade_fr,
+                        countries=countries,
+                        tag=categories[0]
+                    )
                     product_obj.save()
