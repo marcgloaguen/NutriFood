@@ -10,6 +10,10 @@ def index(request):
 
 def id(request, id):
     object = Produit.objects.get(id=id)
-    context = {'brands': object.brands}
+    context = {
+        'brands': object.brands,
+        'id': object.id,
+        'nutriscore': object.nutrition_grade_fr
+    }
 
     return render(request, 'search/id_infos.html', context)
